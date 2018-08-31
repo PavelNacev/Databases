@@ -1,0 +1,15 @@
+CREATE TABLE EventPlanLine
+( PlanNo VARCHAR(8) NOT NULL,
+LineNo VARCHAR (8) NOT NULL,
+LocNo VARCHAR(8) NOT NULL,
+ResNo VARCHAR (8) NOT NULL,
+TimeStart TIME NOT NULL,
+TimeEnd TIME NOT NULL,
+NumberFld INT NOT NULL,
+PRIMARY KEY(PlanNo, LineNo),
+FOREIGN KEY (PlanNo) REFERENCES EventPlan(PlanNo),
+FOREIGN KEY (LocNo) REFERENCES Location(LocNo),
+FOREIGN KEY (ResNo) REFERENCES ResourceTBL(ResNo),
+CHECK (TimeStart < TimeEnd)
+);
+

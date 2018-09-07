@@ -32,3 +32,5 @@ ON L.FacNo = F.FacNo
 JOIN EventPlan AS EP
 ON EPL.PlanNo=EP.PlanNo
 WHERE (F.FacName = 'Basketball arena') AND (EP.WorkDate BETWEEN '20181001' AND '20181231') AND (EP.Activity = 'Operation');
+
+

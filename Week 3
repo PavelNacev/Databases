@@ -5,3 +5,30 @@ ON EP.EventNo=ER.EventNo
 INNER JOIN Facility AS F
 ON ER.FacNo=F.FacNo
 WHERE (EP.WorkDate BETWEEN '20181201' AND '20181231') AND (F.FacName = 'Basketball arena');
+
+--Problem # 3
+
+SELECT ER.EventNo, ER.DateHeld, ER.DateReq, ER.Status, ER.EstCost 
+FROM EventRequests AS ER
+INNER JOIN Facility AS F
+ON ER.FacNo = F.FacNo
+INNER JOIN EventPlan AS EP
+ON ER.EventNo = EP.EventNo
+INNER JOIN Employee AS E
+ON EP.EmpNo = E. EmpNo
+WHERE (F.FacName = 'Basketball arena') AND (E.EmpName= 'Mary Manager') AND (ER.DateHeld BETWEEN '20181001' AND '20181231');
+
+
+--Problem #4
+
+SELECT EPL.PlanNo, EPL.LineNo, EPL.TimeStart, EPL.TImeEnd, EPL.NumberFld AS 'Number' , R.ResName AS 'Resource Name',  L.LocName AS 'Location Name'
+FROM EventPlanLine AS EPL
+JOIN ResourceTBL AS R 
+ON EPL.ResNo=R.ResNo
+JOIN Location AS L
+ON EPL.LocNo = L.LocNo
+JOIN Facility AS F
+ON L.FacNo = F.FacNo
+JOIN EventPlan AS EP
+ON EPL.PlanNo=EP.PlanNo
+WHERE (F.FacName = 'Basketball arena') AND (EP.WorkDate BETWEEN '20181001' AND '20181231') AND (EP.Activity = 'Operation');

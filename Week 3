@@ -1,0 +1,7 @@
+SELECT EP.PlanNo, EP.EventNo, EP.WorkDate, EP.Activity 
+FROM EventPlan AS EP
+INNER JOIN EventRequests AS ER
+ON EP.EventNo=ER.EventNo
+INNER JOIN Facility AS F
+ON ER.FacNo=F.FacNo
+WHERE (EP.WorkDate BETWEEN '20181201' AND '20181231') AND (F.FacName = 'Basketball arena');
